@@ -1,4 +1,5 @@
 import java.util.*;
+import java.lang.*;
 import static java.lang.System.out;
 public class MemberForList {
 	private static List<String> members;
@@ -7,7 +8,7 @@ public class MemberForList {
 		Scanner scanner = new Scanner(System.in);
 		String cmd;
 		do{
-			out.print("command(1:add member  2:show list  3:delete member  0:quit)>>");
+			out.print("command(1:add member  2:show list  3:delete member by name  4:delete member by index  0:quit)>>");
 			cmd = scanner.nextLine();
 			switch(cmd){
 				case "1":
@@ -18,6 +19,9 @@ public class MemberForList {
 					break;
 				case "3":
 					deleteMember();
+					break;
+				case "4":
+					deleteMember2();
 					break;
 				case "0":
 					break;
@@ -41,7 +45,7 @@ public class MemberForList {
 			System.out.println(member);
 		}
 	}
-	//remove a element in list
+	//remove a element by name in list
 	static void deleteMember(){
 		String delMember="";
 		for(String member:members){
@@ -52,5 +56,13 @@ public class MemberForList {
 		out.print("Please enter a name in list(" + delMember + ")>>");
 		name = scanner.nextLine();
 		members.remove(name);
+	}
+	//remove a element by index in list
+	static void deleteMember2(){
+		Scanner scanner = new Scanner(System.in);
+		int index;
+		out.print("Please enter a index in list(0~" + (members.size()-1) + ")>>");
+		index = scanner.nextInt();
+		members.remove(index);
 	}
 }
