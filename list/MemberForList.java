@@ -8,25 +8,29 @@ public class MemberForList {
 		Scanner scanner = new Scanner(System.in);
 		String cmd;
 		do{
-			out.print("command(1:add member  2:show list  3:delete member by name  4:delete member by index  0:quit)>>");
+			out.print("command(1:show list  2:add member  3:reset member  4:delete member by name  5:delete member by index  0:quit)>>");
 			cmd = scanner.nextLine();
 			switch(cmd){
 				case "1":
-					addMember();
-					break;
-				case "2":
 					showList();
 					break;
+				case "2":
+					addMember();
+					break;
 				case "3":
-					deleteMember();
+					resetMember();
 					break;
 				case "4":
+					deleteMember();
+					break;
+				case "5":
 					deleteMember2();
 					break;
 				case "0":
 					break;
 				default:
 					System.out.println("Invalid command!!");
+					break;
 			}
 			if("0".equals(cmd)){break;}
 		}while(true);
@@ -38,6 +42,21 @@ public class MemberForList {
 		out.print("Please enter a name>>");
 		name = scanner.nextLine();
 		members.add(name);
+	}
+	//reset a element in list
+	static void resetMember(){
+		Scanner scanner = new Scanner(System.in);
+		Scanner scanner2 = new Scanner(System.in);
+		int index = 0;
+		int maxIndex = members.size() - 1;
+		String name;
+		do{
+			out.print("Please enter a index in list(0~" + maxIndex + ")>>");
+			index = scanner.nextInt();
+		}while(index < 0 || index > maxIndex);
+		out.print("Please enter a new name>>");
+		name = scanner2.nextLine();
+		members.set(index,name);
 	}
 	//show list
 	static void showList(){

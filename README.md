@@ -10,10 +10,14 @@
 
 > list.add("元素");
 
-### 3.刪除元素 by value
+### 3.設定某個index的值
+
+> list.set(1,"元素");//set(index,element)
+
+### 4.刪除元素 by value
 
 > list.remove("元素");
 
-### 4.刪除元素 by index(從0開始)
+### 5.刪除元素 by index(從0開始)
 
 > list.remove(1);
