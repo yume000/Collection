@@ -8,7 +8,12 @@ public class MemberForList {
 		Scanner scanner = new Scanner(System.in);
 		String cmd;
 		do{
-			out.print("command(1:show list  2:add member  3:reset member  4:delete member by name  5:delete member by index  0:quit)>>");
+			out.print("----------------------\n" + 
+			"Commands below:\n" + 
+			"1:list  2:add  3:reset\n" + 
+			"4:delete(name)  5:delete(index)  6:clear\n" + 
+			"0:quit\n" +
+			"Please enter>>");
 			cmd = scanner.nextLine();
 			switch(cmd){
 				case "1":
@@ -26,6 +31,9 @@ public class MemberForList {
 				case "5":
 					deleteMember2();
 					break;
+				case "6":
+				  clearMember();
+				  break;
 				case "0":
 					break;
 				default:
@@ -54,14 +62,24 @@ public class MemberForList {
 			out.print("Please enter a index in list(0~" + maxIndex + ")>>");
 			index = scanner.nextInt();
 		}while(index < 0 || index > maxIndex);
-		out.print("Please enter a new name>>");
+		out.print("The old name is "+members.get(index)+"! Please enter a new name>>");
 		name = scanner2.nextLine();
 		members.set(index,name);
 	}
 	//show list
 	static void showList(){
-		for(String member:members){
-			System.out.println(member);
+		if (members.isEmpty()){
+			System.out.println("Here's no member in this list!!!!");
+		} else {
+			/*
+			for(String member:members){
+				System.out.println(member);
+			}
+			*/
+			Iterator iterator = members.iterator();
+			while (iterator.hasNext()) {
+				System.out.println(iterator.next());
+			}
 		}
 	}
 	//remove a element by name in list
@@ -83,5 +101,9 @@ public class MemberForList {
 		out.print("Please enter a index in list(0~" + (members.size()-1) + ")>>");
 		index = scanner.nextInt();
 		members.remove(index);
+	}
+	//clear all members
+	static void clearMember(){
+		members.clear();
 	}
 }
